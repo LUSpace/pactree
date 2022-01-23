@@ -18,9 +18,9 @@ public:
       if (k_sz[i] > 256) {
         printf("Key length is too long %lld\n", k_sz[i]);
       }
-      Key_t key;
-      key.set(key[i], k_sz[i]);
-      my_tree->insert(key, reinterpret_cast<uint64_t>(value[i]));
+      Key_t str_key;
+      str_key.set(key[i], k_sz[i]);
+      my_tree->insert(str_key, reinterpret_cast<uint64_t>(value[i]));
     }
     my_tree->unregisterThread();
   }
