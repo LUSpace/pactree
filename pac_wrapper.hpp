@@ -9,10 +9,15 @@
 // used to define the interface of all benchmarking trees
 class pac_wrapper : public tree_api {
 public:
-  pac_wrapper() { my_tree = new pactree(1); }
+  pac_wrapper() {
+    std::cout << "Before creating instance of pac_wrapper" << std::endl;
+    my_tree = new pactree(1);
+    std::cout << "After creating instance of pac_wrapper" << std::endl;
+  }
 
   void bulk_load(char *key[], size_t k_sz[], char *value[], size_t v_sz[],
                  size_t num_kv) {
+    std::cout << "Before bulkloading kvs" << std::endl;
     my_tree->registerThread();
     for (size_t i = 0; i < num_kv; i++) {
       if (k_sz[i] > 256) {
@@ -23,6 +28,7 @@ public:
       my_tree->insert(str_key, reinterpret_cast<uint64_t>(value[i]));
     }
     my_tree->unregisterThread();
+    std::cout << "End bulkloading kvs" << std::endl;
   }
 
   bool insert(const char *key, size_t key_sz, const char *value,
