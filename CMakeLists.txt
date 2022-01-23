@@ -26,5 +26,8 @@ enable_testing()
 add_subdirectory(lib/PDL-ART)
 add_subdirectory(src)
 add_subdirectory(example)
+
+add_library(pac SHARED pac_wrapper.cpp)
+
 #add_subdirectory(tests)
 #add_subdirectory(benchmarks)
