@@ -28,6 +28,15 @@ add_subdirectory(src)
 add_subdirectory(example)
 
 add_library(pac SHARED pac_wrapper.cpp)
+TARGET_LINK_LIBRARIES(
+	pac
+    pactree
+    pdlart
+	tbb
+    numa
+	pmem
+	pmemobj
+)
 
 #add_subdirectory(tests)
 #add_subdirectory(benchmarks)
