@@ -33,6 +33,7 @@ public:
 
   bool insert(const char *key, size_t key_sz, const char *value,
               size_t value_sz, size_t thread_id) override {
+    thread_local bool is_registered(false);
     if (!is_registered) {
       my_tree->registerThread();
       is_registered = true;
@@ -46,6 +47,7 @@ public:
 
   bool find(const char *key, size_t sz, char *value_out,
             size_t thread_id) override {
+    thread_local bool is_registered(false);
     if (!is_registered) {
       my_tree->registerThread();
       is_registered = true;
@@ -74,6 +76,6 @@ public:
   }
 
 private:
-  thread_local inline static bool is_registered = false;
+  // thread_local inline static bool is_registered = false;
   pactree *my_tree; // Store the pointer to the tree instance
 };
