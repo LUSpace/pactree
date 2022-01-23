@@ -45,7 +45,7 @@ public:
       is_registered = true;
     }
 
-    ey_t str_key;
+    Key_t str_key;
     str_key.set(key, sz);
     auto ret = my_tree->lookup(str_key);
     memcpy(value_out, &ret, sizeof(ret));
