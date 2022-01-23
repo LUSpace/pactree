@@ -7,9 +7,9 @@
 #include <thread>
 
 // used to define the interface of all benchmarking trees
-class worm_wrapper : public tree_api {
+class pac_wrapper : public tree_api {
 public:
-  worm_wrapper() { my_tree = new pactree(1); }
+  pac_wrapper() { my_tree = new pactree(1); }
 
   void bulk_load(char *key[], size_t k_sz[], char *value[], size_t v_sz[],
                  size_t num_kv) {
