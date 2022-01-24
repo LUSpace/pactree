@@ -336,6 +336,7 @@ bool pactreeImpl::JumpNodewithUnLock(void *node) {
 #endif
 
 bool pactreeImpl::insert(Key_t &key, Val_t val) {
+  std::cout << "Start inserting key " << key.getData() << std::endl;
   uint64_t clock = ordo_get_clock();
   curThreadData->read_lock(clock);
   uint64_t ticks = 0;
@@ -367,6 +368,7 @@ bool pactreeImpl::insert(Key_t &key, Val_t val) {
   acc_dl_time(ticks);
   curThreadData->read_unlock();
 
+  std::cout << "Start inserting key " << key.getData() << std::endl;
   return ret;
 }
 
